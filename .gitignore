@@ -1,0 +1,5 @@
+/.idea
+/node_modules
+/example/vendor/*
+!/example/vendor/.gitkeep
+/example/music/*

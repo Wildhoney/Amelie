@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/Visualiser/issues"
   },
-  "homepage": "https://github.com/Wildhoney/Visualiser"
+  "homepage": "https://github.com/Wildhoney/Visualiser",
+  "devDependencies": {
+    "express": "^4.10.4"
+  }
 }
