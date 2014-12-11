@@ -1,0 +1,30 @@
+{
+  "name": "amelie",
+  "version": "0.1.1",
+  "homepage": "https://github.com/Wildhoney/Amelie",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "HTML5 audio visualiser experiment using D3 with a curious Amelie theme.",
+  "main": "example/index.html",
+  "keywords": [
+    "visualiser",
+    "audio",
+    "html5",
+    "music",
+    "songs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "example/vendor",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "d3": "~3.5.2",
+    "react": "~0.12.1"
+  }
+}

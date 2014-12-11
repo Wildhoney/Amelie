@@ -1,7 +1,7 @@
 {
   "name": "amelie",
   "version": "0.1.1",
-  "description": "HTML5 audio visualiser experiment using THREE.",
+  "description": "HTML5 audio visualiser experiment using D3 with a curious Amelie theme.",
   "main": "example/index.html",
   "directories": {
     "example": "example"
