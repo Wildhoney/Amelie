@@ -37,9 +37,10 @@
         gulp.src('module/*.css')
             .pipe(concat('amelie.css'))
             .pipe(gulp.dest(config.build.directory))
+            .pipe(gulp.dest(config.build.copy))
             .pipe(cssmin())
             .pipe(rename({suffix: '.min'}))
-            .pipe(gulp.dest(config.build.directory));
+            .pipe(gulp.dest(config.build.directory))
 
     });
 
