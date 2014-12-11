@@ -19,7 +19,7 @@ Amelie is a curiously mesmerising kaleidoscope visualisation written in [React.j
 
 # Getting Started
 
-You're more than welcome to run the example yourself locally &ndash; simply clone the repository and run `npm start` from your terminal &ndash; `npm run` uses [Foreman](http://theforeman.org/) for running the example on [`0.0.0.0:5000`](http://127.0.0.1:5000/).
+You're more than welcome to run the example yourself locally &ndash; simply clone the repository and run `npm start` from your terminal &ndash; `npm start` uses [Foreman](http://theforeman.org/) for running the example on [`0.0.0.0:5000`](http://127.0.0.1:5000/).
 
 # Module
 
