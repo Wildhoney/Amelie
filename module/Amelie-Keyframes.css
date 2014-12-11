@@ -42,6 +42,27 @@
 
 /* Rotate Animation */
 
+@keyframes amelie-rotation {
+
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+
+}
+
+@-o-keyframes amelie-rotation {
+
+    from { -o-transform: rotate(0deg); }
+    to   { -o-transform: rotate(360deg); }
+
+}
+
+@-moz-keyframes amelie-rotation {
+
+    from { -moz-transform: rotate(0deg); }
+    to   { -moz-transform: rotate(360deg); }
+
+}
+
 @-webkit-keyframes amelie-rotation {
 
     from { -webkit-transform: rotate(0deg); }
