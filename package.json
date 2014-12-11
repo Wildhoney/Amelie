@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wildhoney/Visualiser.git"
+    "url": "https://github.com/Wildhoney/Amelie.git"
   },
   "keywords": [
     "visualiser",
@@ -24,9 +24,9 @@
   "author": "Adam Timberlake <adam.timberlake@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Wildhoney/Visualiser/issues"
+    "url": "https://github.com/Wildhoney/Amelie/issues"
   },
-  "homepage": "https://github.com/Wildhoney/Visualiser",
+  "homepage": "https://github.com/Wildhoney/Amelie",
   "devDependencies": {
     "bower": "^1.3.12",
     "express": "^4.10.4",
