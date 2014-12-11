@@ -179,7 +179,15 @@
         componentDidMount: function componentDidMount() {
 
             // Configure the D3 SVG component.
-            var d3Element = $d3.select(this.getDOMNode()).append('svg').attr('width', 200).attr('height', 200).append('g');
+            var d3Element = $d3.select(this.getDOMNode())
+                               .append('svg')
+                               .attr('width', this.state.size[0])
+                               .attr('height', this.state.size[1])
+                               .append('g');
+
+            this.getDOMNode().style.width  = this.state.size[0] + 'px';
+            this.getDOMNode().style.height = this.state.size[1] + 'px';
+
             this.setState({ d3: d3Element, colours: $d3.scale.category20b() });
 
         },
@@ -223,7 +231,7 @@
          * @returns {Object}
          */
         getInitialState: function getInitialState() {
-            return { circles: [], colours: function noop() {} };
+            return { circles: [], colours: function noop() {}, size: [250, 250] };
         },
 
         /**
@@ -241,17 +249,26 @@
 
             }
 
-            var colours   = this.state.colours,
-                pointerX  = this.props.cursor.x,
-                pointerY  = this.props.cursor.y;
+            var colours = this.state.colours;
 
             for (var index = 0, maxLength = frequencyData.length; index < maxLength; index++) {
 
-                this.state.circles[index].attr('cx', pointerX + 50).attr('cy', pointerY + 50)
-                                         .attr('r', frequencyData[index] / 7.5)
+                this.state.circles[index].attr('cx', this.state.size[0] - 60).attr('cy', this.state.size[1] - 60)
+                                         .attr('r', frequencyData[index] / 5)
                                          .style('fill', colours(index));
 
             }
+
+        },
+
+        /**
+         * @method positionDOMElement
+         * @param cursorData {Object}
+         * @return {void}
+         */
+        positionDOMElement: function positionDOMElement(cursorData) {
+            this.getDOMNode().style.left = (cursorData.x - (this.state.size[0] / 2)) + 'px';
+            this.getDOMNode().style.top  = (cursorData.y - (this.state.size[1] / 2)) + 'px';
         },
 
         /**
@@ -264,6 +281,10 @@
 
                 // We're ready to begin rendering the circles for this particular canvas element.
                 this.renderCircles(this.props.frequencyData);
+
+                if (this.state.d3) {
+                    this.positionDOMElement(this.props.cursor);
+                }
 
             }
 
