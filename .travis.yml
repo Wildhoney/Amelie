@@ -16,6 +16,9 @@ script:
 
 deploy:
   provider: heroku
+  strategy: api
+  all_branches: true
+  skip_cleanup: true
   api_key:
     secure: bVLA+MwjH5DSB6eeo4YoKedGgu+I1jeZ563vfVSl2YL8lluFhcTGZVfEVZpRSoE2GsPD0JvPWD6sQmgds4S/IAjXKlKN93Hq4OzYPrMqe1yTE2HHQyJFPvategDscH3MElcE6eOa0zvfvvOs1+5cg8XIAGHjl92AEBThaPwcDw0=
   app: amelie
