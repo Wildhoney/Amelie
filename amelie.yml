@@ -4,4 +4,6 @@ build:
   directory: dist
   copy: example/vendor/amelie
   development: amelie.jsx
-  production: amelie.min.js
+  production:
+    minified: amelie.min.js
+    unminified: amelie.js

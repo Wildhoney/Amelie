@@ -69,10 +69,10 @@
         render: function render() {
 
             return (
-                <section className="amelie">
-                    <audio controls="controls" autoPlay="autoplay" src={ this.props.audio }></audio>
-                    <Visualiser analyser={ this.state.analyser } />
-                </section>
+                React.DOM('section', {className: "amelie"}, [
+                    React.DOM('audio', {controls: "controls", autoPlay: "autoplay", src:  this.props.audio}),
+                    Visualiser({analyser:  this.state.analyser})
+                ])
             );
 
         }
@@ -152,11 +152,11 @@
         render: function render() {
 
             return (
-                <section className="visualiser" onMouseMove={this.setCursorPosition}>
-                    <Canvas frequencyData={this.state.frequencyData}
-                            cursor={this.state.cursor}
-                            fftSize={this.state.fftSize} />
-                </section>
+                React.DOM('section', {className: "visualiser", onMouseMove: this.setCursorPosition}, [
+                    Canvas({frequencyData: this.state.frequencyData, 
+                            cursor: this.state.cursor, 
+                            fftSize: this.state.fftSize})
+                ])
             );
 
         }
@@ -275,7 +275,7 @@
             }
 
             return (
-                <div className="canvas-container" />
+                React.DOM('div', {className: "canvas-container"})
             );
 
         }
@@ -284,6 +284,6 @@
 
     // It's time to throw everything to the devil and go to Kislovodsk...
     var amelieNode = $document.querySelector('amelie');
-    $react.render(<Amelie audio={amelieNode.getAttribute('data-audio')} />, amelieNode);
+    $react.render(Amelie({audio: amelieNode.getAttribute('data-audio')}), amelieNode);
 
 })(window.document, window.React, window.d3);
