@@ -3,22 +3,33 @@
 <head>
 
     <meta charset="UTF-8" />
-    <title>Visualiser</title>
+    <title>Amelie</title>
 
     <!-- Prettification! -->
-    <link rel="stylesheet" type="text/css" href="vendor/visualiser/visualiser.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/amelie/default.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/amelie/keyframes.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
 
     <!-- Scriptalicious! -->
-    <script type="text/javascript" src="vendor/visualiser/visualiser.js"></script>
+    <script type="text/javascript" src="vendor/d3/d3.js"></script>
+    <script type="text/javascript" src="vendor/react/JSXTransformer.js"></script>
+    <script type="text/javascript" src="vendor/react/react.js"></script>
+
+    <!-- React.js Application! -->
+    <script type="text/jsx" src="vendor/amelie/amelie.jsx"></script>
 
 </head>
 <body>
 
-    <audio controls="controls" autoplay="autoplay" src="music/BlindFaith.mp3"></audio>
+    <header>
+        <h1>Amelie.</h1>
+        <h2>Audio Visualiser Experiment by Wildhoney</h2>
+    </header>
 
-    <div class="visualiser">
+    <amelie data-audio="audio/Comptine.mp3"></amelie>
 
-    </div>
+    <section class="background"></section>
+    <section class="border"></section>
 
 </body>
 </html>

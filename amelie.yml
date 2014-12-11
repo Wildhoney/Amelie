@@ -1,0 +1,7 @@
+components: module/Amelie.jsx
+
+build:
+  directory: dist
+  copy: example/vendor/amelie
+  development: amelie.jsx
+  production: amelie.min.js
