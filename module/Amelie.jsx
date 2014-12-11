@@ -25,7 +25,7 @@
 
         /**
          * @method getInitialState
-         * @returns {Object}
+         * @return {Object}
          */
         getInitialState: function getInitialState() {
             return { analyser: null };
@@ -46,14 +46,14 @@
         configureAudioContext: function configureAudioContext() {
 
             // Dependencies for analysing the audio stream.
-            var context  = new AudioContext() || webkitAudioContext(),
+            var context  = new AudioContext() || mozAudioContext() || webkitAudioContext(),
                 analyser = context.createAnalyser();
 
             // Route the audio source through our visualiser.
             var source = context.createMediaElementSource(this.getAudioElement());
             source.connect(analyser);
 
-            // Create the analyser object.
+            // Create the analyser object and specify its FFT size in bytes.
             analyser.connect(context.destination);
             analyser.fftSize = 128;
 
@@ -106,7 +106,7 @@
 
         /**
          * @method getInitialState
-         * @returns {Object}
+         * @return {Object}
          */
         getInitialState: function getInitialState() {
             return { cursor: { x: 0, y: 0 }, frequencyData: [] };
@@ -120,18 +120,15 @@
         analyseAudioStream: function anaylseAudioStream(analyser) {
 
             // Round and round we go...
-            (requestAnimationFrame || webkitRequestAnimationFrame)(function() {
+            (requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame)(function() {
                 anaylseAudioStream.call(this, analyser);
             }.bind(this));
 
             // Analyse the frequency data for the current audio track!
             var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-
             analyser.getByteFrequencyData(frequencyData);
-            //analyser.getByteTimeDomainData(frequencyData);
 
-            // Create another circle...
-            //this.renderCircles(frequencyData);
+            // Define the items required to create the visualisation...
             this.setState({ frequencyData: frequencyData, fftSize: analyser.fftSize });
 
         },
@@ -160,7 +157,6 @@
         }
 
     });
-
 
     /**
      * @module Amelie
@@ -252,7 +248,7 @@
 
         /**
          * @method getInitialState
-         * @returns {Object}
+         * @return {Object}
          */
         getInitialState: function getInitialState() {
             return { circles: [], colours: function noop() {}, size: [400, 400] };
