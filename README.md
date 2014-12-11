@@ -22,6 +22,8 @@ Amelie is a curiously mesmerising kaleidoscope visualisation written in [React.j
 You can start the example yourself with the following steps:
 
  * `git clone https://github.com/Wildhoney/Amelie.git`;
- * `npm install; bower install`;
+ * `npm install`;
+ * `bower install`;
+ * `gulp build`;
  * `foreman start`;
- * Navigate to [http://127.0.0.1:5000/](http://127.0.0.1:5000/);
+ * Open [`http://127.0.0.1:5000/`](http://127.0.0.1:5000/);
