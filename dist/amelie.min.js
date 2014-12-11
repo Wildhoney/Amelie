@@ -247,12 +247,16 @@
 
             for (var index = 0, maxLength = frequencyData.length; index < maxLength; index++) {
 
-                var circle = this.state.circles[index];
+                (function closure(circle) {
 
-                circle.attr('cx', function cx() { return pointerX + 50; })
-                      .attr('cy', function cy() { return pointerY + 50; })
-                      .attr('r', function r() { return frequencyData[index] / 7.5; })
-                      .style('fill', function fill() { return colours(index); });
+                    var currentIndex = index;
+
+                    circle.attr('cx', function cx() { return pointerX + 50; })
+                        .attr('cy', function cy() { return pointerY + 50; })
+                        .attr('r', function r() { return frequencyData[currentIndex] / 7.5; })
+                        .style('fill', function fill() { return colours(currentIndex); });
+
+                })(this.state.circles[index]);
 
             }
         },
