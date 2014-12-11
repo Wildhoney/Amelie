@@ -57,7 +57,7 @@
     gulp.task('build', ['styles', 'scripts']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
-        gulp.watch(config.components, ['build']);
+        gulp.watch('module/*', ['build']);
     });
 
 })();

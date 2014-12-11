@@ -153,9 +153,7 @@
 
             return (
                 <section className="visualiser" onMouseMove={this.setCursorPosition}>
-                    <Canvas frequencyData={this.state.frequencyData}
-                            cursor={this.state.cursor}
-                            fftSize={this.state.fftSize} />
+                    <Canvas frequencyData={this.state.frequencyData} cursor={this.state.cursor} fftSize={this.state.fftSize} />
                 </section>
             );
 
@@ -188,7 +186,33 @@
             this.getDOMNode().style.width  = this.state.size[0] + 'px';
             this.getDOMNode().style.height = this.state.size[1] + 'px';
 
-            this.setState({ d3: d3Element, colours: $d3.scale.category20b() });
+            /**
+             * Responsible for generating the greyscale colours for the circle.
+             *
+             * @return {Function}
+             * @constructor
+             */
+            var ColourGenerator = function ColourGenerator() {
+
+                var cache = [];
+
+                return function(index) {
+
+                    if (!cache[index]) {
+
+                        // Generate a random set of RGB values for the current circle.
+                        var random   = Math.round((Math.random() * 255));
+                        cache[index] = 'rgb(' + random + ', ' + random + ', ' + random + ')';
+
+                    }
+
+                    return cache[index];
+
+                };
+
+            };
+
+            this.setState({ d3: d3Element, colours: new ColourGenerator() });
 
         },
 
@@ -231,7 +255,7 @@
          * @returns {Object}
          */
         getInitialState: function getInitialState() {
-            return { circles: [], colours: function noop() {}, size: [250, 250] };
+            return { circles: [], colours: function noop() {}, size: [400, 400] };
         },
 
         /**
@@ -249,16 +273,66 @@
 
             }
 
-            var colours = this.state.colours;
+            var colours   = this.state.colours,
+                positions = this.computeCxCy();
 
             for (var index = 0, maxLength = frequencyData.length; index < maxLength; index++) {
 
-                this.state.circles[index].attr('cx', this.state.size[0] - 60).attr('cy', this.state.size[1] - 60)
-                                         .attr('r', frequencyData[index] / 5)
+                this.state.circles[index].attr('cx', positions.cx).attr('cy', positions.cy)
+                                         .attr('r', frequencyData[index] / 2.5)
                                          .style('fill', colours(index));
 
             }
 
+            // Create the mini little circles.
+            this.renderSplodges(frequencyData);
+
+        },
+
+        /**
+         * @method computeCxCy
+         * @return {Object}
+         */
+        computeCxCy: function computeCxCy() {
+            return { cx: this.state.size[0] - 110, cy: this.state.size[1] - 110 };
+        },
+
+        /**
+         * @method renderSplodges
+         * @param frequencyData {Uint8Array}
+         * @return {void}
+         */
+        renderSplodges: function renderSplodges(frequencyData) {
+
+            var positions     = this.computeCxCy(),
+                length        = frequencyData.length,
+                trebleParts   = (length - (length / 4)),
+                trebleArray   = Array.prototype.slice.call(frequencyData).splice(length - trebleParts),
+                trebleSegment = trebleArray.reduce(function reduce(currentValue, value) {
+                    return currentValue + value;
+                }, 0);
+
+            if (trebleSegment !== 0) {
+
+                positions.cx += (Math.random() * 190) - 95;
+                positions.cy += (Math.random() * 190) - 95;
+
+                var circle = this.state.d3.append('circle').attr('cx', positions.cx).attr('cy', positions.cy)
+                    .attr('r', trebleSegment / 40).style('fill', this.getRandomColour());
+
+                circle.transition().attr('r', 0).duration(500).remove();
+
+            }
+
+        },
+
+        /**
+         * @method getRandomColour
+         * @return {String}
+         */
+        getRandomColour: function getRandomColour() {
+            var colours = ['267831', 'B1B541', 'FFCD36', 'D60404', '1F0404'];
+            return '#' + colours[Math.floor(Math.random() * colours.length)];
         },
 
         /**
