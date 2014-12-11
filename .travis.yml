@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - '0.10'
+  - '0.11'
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install -g grunt-cli
+  - npm install -g bower
+
+script:
+  - npm install
+  - bower install
+  - grunt test
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: bVLA+MwjH5DSB6eeo4YoKedGgu+I1jeZ563vfVSl2YL8lluFhcTGZVfEVZpRSoE2GsPD0JvPWD6sQmgds4S/IAjXKlKN93Hq4OzYPrMqe1yTE2HHQyJFPvategDscH3MElcE6eOa0zvfvvOs1+5cg8XIAGHjl92AEBThaPwcDw0=
+  app: amelie
+  on:
+    repo: Wildhoney/Amelie
