@@ -13,7 +13,7 @@
 
 Amelie is a curiously mesmerising kaleidoscope visualisation written in [React.js](http://facebook.github.io/react/) using [D3](http://d3js.org/) with HTML5's [`AnalyserNode`](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode) API.
 
-![Amelie Screenshot](http://i.imgur.com/iIK7Lof.png)
+![Amelie Screenshot](http://i.imgur.com/Ycuwn7b.png)
 
 ---
 
