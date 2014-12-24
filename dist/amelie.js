@@ -46,7 +46,7 @@
         configureAudioContext: function configureAudioContext() {
 
             // Dependencies for analysing the audio stream.
-            var context  = new AudioContext() || mozAudioContext() || webkitAudioContext(),
+            var context  = new (AudioContext || mozAudioContext || webkitAudioContext)(),
                 analyser = context.createAnalyser();
 
             // Route the audio source through our visualiser.
