@@ -46,9 +46,18 @@
         configureAudioContext: function configureAudioContext() {
 
             // Dependencies for analysing the audio stream.
-            var contextClass = (AudioContext || mozAudioContext || webkitAudioContext || oAudioContext || msAudioContext),
-                context      = contextClass(),
-                analyser     = context.createAnalyser();
+            var ContextClass = (AudioContext || mozAudioContext || webkitAudioContext || oAudioContext || msAudioContext);
+
+            if (!ContextClass) {
+
+                // AudioContext API isn't supported.
+                throw "Amelie: AudioContext API unavailable in current browser. Please try another!";
+                
+            }
+
+            // Audio context instantiation.
+            var context  = new ContextClass(),
+                analyser = context.createAnalyser();
 
             // Route the audio source through our visualiser.
             var source = context.createMediaElementSource(this.getAudioElement());
