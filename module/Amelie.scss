@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+
+header {
+    position: absolute;
+    z-index: 1001;
+    top: 20px;
+    right: 20px;
+    color: white;
+    text-align: right;
+
+    h1 {
+        font-family: Lato, Arial, Tahoma Helvetica, sans-serif;
+        font-size: 32px;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-weight: normal;
+        letter-spacing: 1px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, .5);
+
+        a {
+            color: rgba(255, 255, 255, .5);
+        }
+    }
+
+}
+
+/* Soundtrack */
+
+section.soundtrack {
+    position: absolute;
+    z-index: 1001;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px;
+
+    img {
+        width: 100px;
+        float: left;
+        overflow: hidden;
+        border: 3px solid white;
+    }
+
+    ul.information {
+        width: 200px;
+        list-style-type: none;
+        float: left;
+        margin: 25px 0 0 15px;
+        overflow: hidden;
+
+        li {
+            font-family: Lato, Arial, Tahoma Helvetica, sans-serif;
+            color: white;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        a {
+            text-transform: uppercase;
+            color: lightgray;
+            font-size: 11px;
+        }
+    }
+}
+
+/* Background */
+
+section.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('../../images/background.png') no-repeat;
+    background-size: cover;
+}
+
+/* Border */
+
+section.border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20001;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 5px white;
+}
+
+/* Visualiser */
+
+audio {
+    display: none;
+}
+
+section.visualiser {
+    position: absolute;
+    z-index: 102;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+div.canvas-container {
+    position: relative;
+}
+
+section.visualiser svg {
+    position: absolute;
+    z-index: 103;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .75;
+
+            animation: amelie-rotation 45s infinite linear;
+         -o-animation: amelie-rotation 45s infinite linear;
+       -moz-animation: amelie-rotation 45s infinite linear;
+    -webkit-animation: amelie-rotation 45s infinite linear;
+
+}
