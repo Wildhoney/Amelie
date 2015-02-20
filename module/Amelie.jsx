@@ -52,7 +52,7 @@
 
                 // AudioContext API isn't supported.
                 throw "Amelie: AudioContext API unavailable in current browser. Please try another!";
-                
+
             }
 
             // Audio context instantiation.

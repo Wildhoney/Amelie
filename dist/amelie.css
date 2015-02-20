@@ -75,6 +75,10 @@
     box-sizing: border-box;
 }
 
+body, html {
+    overflow: hidden;
+}
+
 /* Header */
 
 header {
